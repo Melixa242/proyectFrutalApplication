@@ -432,7 +432,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/background_white"
+        app:itemTextColor="@color/black"
+        android:background="@color/warning_yellow"
         app:menu="@menu/menu_navegacion" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
