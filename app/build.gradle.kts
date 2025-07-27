@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.proyectfrutalapplication"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.proyectfrutalapplication"
@@ -33,6 +33,7 @@ android {
 
 dependencies {
 
+    // ANDROIDX — OK ✔
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -40,7 +41,12 @@ dependencies {
     implementation(libs.drawerlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    implementation(libs.play.services.maps)
+    implementation(libs.androidx.cardview)
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
+
+    implementation("org.osmdroid:osmdroid-wms:6.1.18")
+    implementation("org.osmdroid:osmdroid-mapsforge:6.1.18")
+
+
 }

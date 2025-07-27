@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Contenido principal -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Header con gradiente -->
+        <View
+            android:id="@+id/contactHeaderView"
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            android:background="@drawable/gradient_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient_background"
+            android:title="@string/contacto"
+            app:popupTheme="@style/AppTheme"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Logo en el header -->
+        <ImageView
+            android:id="@+id/contactLogoImageView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="74dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo"
+            android:background="@drawable/card_background"
+            android:padding="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/contactHeaderView" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/contactTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/contactanos"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contactLogoImageView" />
+
+        <!-- ScrollView para el contenido -->
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contactHeaderView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Tarjeta de información de contacto -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <!-- Título de información -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/informacion_contacto"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="16dp"
+                            android:drawableStart="@drawable/ic_contact"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"/>
+
+                        <!-- Dirección -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_location"
+                                android:contentDescription="@string/direccion"
+                                app:tint="@color/colorPrimary"
+                                android:layout_marginEnd="12dp"/>
+
+                            <TextView
+                                android:id="@+id/addressTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/direccion_ejemplo"
+                                android:textColor="@color/colorSecondary"
+                                android:textSize="14sp"/>
+
+                        </LinearLayout>
+
+                        <!-- Teléfono -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_phone"
+                                android:contentDescription="@string/telefono"
+                                app:tint="@color/colorPrimary"
+                                android:layout_marginEnd="12dp"/>
+
+                            <TextView
+                                android:id="@+id/phoneTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/telefono_ejemplo"
+                                android:textColor="@color/colorSecondary"
+                                android:textSize="14sp"
+                                android:autoLink="phone"/>
+
+                        </LinearLayout>
+
+                        <!-- Email -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_email"
+                                android:contentDescription="@string/email"
+                                app:tint="@color/colorPrimary"
+                                android:layout_marginEnd="12dp"/>
+
+                            <TextView
+                                android:id="@+id/emailTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/email_ejemplo"
+                                android:textColor="@color/colorSecondary"
+                                android:textSize="14sp"
+                                android:autoLink="email"/>
+
+                        </LinearLayout>
+
+                        <!-- Horario -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_time"
+                                android:contentDescription="@string/horario"
+                                app:tint="@color/colorPrimary"
+                                android:layout_marginEnd="12dp"/>
+
+                            <TextView
+                                android:id="@+id/scheduleTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/horario_ejemplo"
+                                android:textColor="@color/colorSecondary"
+                                android:textSize="14sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Tarjeta del mapa -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <!-- Título del mapa -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nuestra_ubicacion"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="16dp"
+                            android:drawableStart="@drawable/ic_map"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"/>
+
+                        <!-- Contenedor del mapa OpenStreetMap -->
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:background="@drawable/edit_text_selector">
+
+                            <org.osmdroid.views.MapView
+                                android:id="@+id/mapView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+
+                        </FrameLayout>
+
+                        <!-- Botón para abrir en Google Maps -->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/openMapsButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_selector"
+                            android:text="@string/abrir_en_maps"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:padding="12dp"
+                            android:layout_marginTop="16dp"
+                            android:drawableStart="@drawable/ic_navigation"
+                            android:drawablePadding="8dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Tarjeta de formulario de contacto -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <!-- Título del formulario -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/envianos_mensaje"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="16dp"
+                            android:drawableStart="@drawable/ic_message"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"/>
+
+                        <!-- Campo nombre -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nombre"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp" />
+
+                        <EditText
+                            android:id="@+id/nameEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:background="@drawable/edit_text_selector"
+                            android:hint="@string/nombre_hint"
+                            android:inputType="textCapWords"
+                            android:padding="16dp"
+                            android:textColor="@color/colorSecondary"
+                            android:textSize="16sp" />
+
+                        <!-- Campo email -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/email"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp" />
+
+                        <EditText
+                            android:id="@+id/emailEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:background="@drawable/edit_text_selector"
+                            android:hint="@string/email_hint"
+                            android:inputType="textEmailAddress"
+                            android:padding="16dp"
+                            android:textColor="@color/colorSecondary"
+                            android:textSize="16sp" />
+
+                        <!-- Campo mensaje -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mensaje"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp" />
+
+                        <EditText
+                            android:id="@+id/messageEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:layout_marginBottom="24dp"
+                            android:background="@drawable/edit_text_selector"
+                            android:hint="@string/mensaje_hint"
+                            android:inputType="textMultiLine"
+                            android:padding="16dp"
+                            android:textColor="@color/colorSecondary"
+                            android:textSize="16sp"
+                            android:gravity="top|start"
+                            android:maxLines="5" />
+
+                        <!-- Botón enviar -->
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/sendMessageButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_selector"
+                            android:text="@string/enviar_mensaje"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:padding="16dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Menú lateral -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemTextColor="@color/black"
+        android:background="@color/warning_yellow"
+        app:menu="@menu/menu_navegacion" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

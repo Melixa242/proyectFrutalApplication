@@ -154,9 +154,39 @@
     <string name="lista">LISTA DE PULPAS DE FRUTAS</string>
     <string name="lista_pulpa">LISTA DE PULPAS DE FRUTAS</string>
     <string name="c_digo">Código</string>
-    <string name="nombre">Nombre</string>
+
     <string name="contenido">Contenido</string>
     <string name="tprecio">Precio</string>
     <string name="cantidad_oo">Cantidad</string>
+    <string name="contacto">Contacto</string>
+    <string name="contactanos">Contáctanos</string>
+    <string name="informacion_contacto">Información de Contacto</string>
+    <string name="direccion">Dirección</string>
+    <string name="telefono">Teléfono</string>
+    <string name="email">Email</string>
+    <string name="horario">Horario de atención</string>
+
+    <!-- Ejemplos de datos -->
+    <string name="direccion_ejemplo">Av. Busch 4to anillo #2533, Santa Cruz, Bolivia</string>
+    <string name="telefono_ejemplo">+591 73641022</string>
+    <string name="email_ejemplo">info@amelfruit.com</string>
+    <string name="horario_ejemplo">Lunes a Viernes: 8:00 AM - 6:00 PM\nSábados: 9:00 AM - 1:00 PM</string>
+
+    <!-- Mapa -->
+    <string name="nuestra_ubicacion">Nuestra Ubicación</string>
+    <string name="abrir_en_maps">Abrir en Google Maps</string>
+
+    <!-- Formulario -->
+    <string name="envianos_mensaje">Envíanos un Mensaje</string>
+    <string name="nombre">Nombre</string>
+    <string name="nombre_hint">Ingresa tu nombre completo</string>
+
+    <string name="mensaje">Mensaje</string>
+    <string name="mensaje_hint">Escribe tu mensaje aquí...</string>
+    <string name="enviar_mensaje">Enviar Mensaje</string>
+
+    <!-- Navegación -->
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
 
 </resources>
