@@ -18,10 +18,8 @@
 
         <item
             android:id="@+id/nav_register_pulp_drawer"
-            android:icon="@drawable/input_background"
+            android:icon="@drawable/ic_user"
             android:title="@string/registro_de_us" />
-
-
 
 
             <item
