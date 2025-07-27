@@ -1,0 +1,162 @@
+<resources>
+    <string name="app_name2">proyectFrutalApplication</string>
+
+    <string name="app_name">FruitPulp Pro</string>
+
+    <!-- Splash Screen -->
+    <string name="app_subtitle">Gestión de Pulpas de Frutas</string>
+    <string name="loading">Cargando...</string>
+
+    <!-- Login Screen -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="username_hint">Usuario o Email</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="no_account">¿No tienes cuenta? Regístrate</string>
+
+    <!-- Register Screen -->
+    <string name="register_title">Crear Cuenta</string>
+    <string name="full_name_hint">Nombre completo</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="phone_hint">Teléfono</string>
+    <string name="register_button">Crear Cuenta</string>
+    <string name="already_account">¿Ya tienes cuenta? Inicia sesión</string>
+
+    <!-- Password Confirmation -->
+    <string name="confirm_password_title">Confirmar Contraseña</string>
+    <string name="new_password_hint">Nueva contraseña</string>
+    <string name="confirm_password_hint">Confirmar contraseña</string>
+    <string name="password_requirements">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="confirm_button">Confirmar</string>
+
+    <!-- Fruit Pulp Registration -->
+    <string name="pulp_title">Registro de Pulpas</string>
+    <string name="fruit_name_hint">Nombre de la fruta</string>
+    <string name="quantity_hint">Cantidad</string>
+    <string name="unit_kg">Kilogramos</string>
+    <string name="unit_g">Gramos</string>
+    <string name="unit_lb">Libras</string>
+    <string name="fraction_label">Fracción</string>
+    <string name="production_date_hint">Fecha de producción</string>
+    <string name="expiry_date_hint">Fecha de vencimiento</string>
+    <string name="notes_hint">Observaciones adicionales</string>
+    <string name="save_pulp">Guardar Registro</string>
+    <string name="correo">correo electronico</string>
+
+    <!-- Arrays -->
+    <string-array name="weight_units">
+        <item>Kilogramos</item>
+        <item>Gramos</item>
+        <item>Libras</item>
+    </string-array>
+
+    <string-array name="fruit_fractions">
+        <item>1/4</item>
+        <item>1/2</item>
+        <item>1</item>
+        <item>1 1/2</item>
+        <item>2</item>
+    </string-array>
+
+
+    <string name="terms_conditions_text">Acepto los términos y condiciones</string>
+
+    <string name="login_link">Iniciar sesión</string>
+
+
+    <!-- Pantalla 1: Registro de Usuario -->
+    <string name="title_user_registration">Registro de Usuario</string>
+    <string name="subtitle_user_registration">Crea tu cuenta para comenzar</string>
+    <string name="hint_full_name">Nombre completo</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_phone">Número de teléfono</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_continue">Continuar</string>
+
+    <!-- Pantalla 2: Confirmación de Contraseña -->
+    <string name="title_password_confirmation">Confirmación de Contraseña</string>
+    <string name="subtitle_password_confirmation">Confirma tu contraseña para mayor seguridad</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
+    <string name="btn_confirm_registration">Confirmar Registro</string>
+    <string name="btn_back">Volver</string>
+
+    <!-- Pantalla 3: Registro de Pulpas -->
+    <string name="title_pulp_registration">Registro de Pulpas</string>
+    <string name="subtitle_pulp_registration">Registra las pulpas de frutas congeladas</string>
+    <string name="label_fruit_type">Tipo de Fruta</string>
+    <string name="label_quantity">Cantidad (en fracciones)</string>
+    <string name="label_storage_date">Fecha de Almacenamiento</string>
+    <string name="hint_fruit_name">Nombre de la fruta</string>
+    <string name="hint_quantity">Ej: 1/2, 3/4, 2</string>
+    <string name="hint_date">dd/mm/yyyy</string>
+    <string name="btn_save_pulp">Guardar Pulpa</string>
+    <string name="btn_finish">Finalizar</string>
+
+    <!-- Opciones de cantidad -->
+    <string name="fraction_quarter">1/4</string>
+    <string name="fraction_half">1/2</string>
+    <string name="fraction_three_quarters">3/4</string>
+    <string name="fraction_one">1</string>
+    <string name="fraction_custom">Personalizado</string>
+    <string name="logo_fruitpulp_pro">Logo FruitPulp Pro</string>
+    <string name="juan_p_rez_gonz_lez">Juan Pérez González</string>
+    <string name="juan_perez_email_com">juan.perez@email.com</string>
+    <string name="datos_del_usuario">Datos del Usuario</string>
+    <string name="requisitos_de_seguridad">Requisitos de seguridad:</string>
+    <string name="m_nimo_8_caracteres">• Mínimo 8 caracteres\n• Al menos una letra mayúscula\n• Al menos un número\n• Al menos un carácter especial</string>
+    <string name="fecha_de_producci_n">Fecha de Producción</string>
+    <string name="fecha_de_vencimiento">Fecha de Vencimiento</string>
+    <string name="observaciones_adicionales">Observaciones Adicionales</string>
+    <string name="fechas_de_control">Fechas de Control</string>
+    <string name="kilomedio">1 1/2</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+    <string name="_3_4">3/4</string>
+    <string name="_1_2">1/2</string>
+    <string name="_1_4">1/4</string>
+    <string name="unidad">Unidad</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="cantidad_y_medidas">Cantidad y Medidas</string>
+    <string name="nombre_de_la_fruta">Nombre de la Fruta</string>
+    <string name="informaci_n_de_la_fruta">Información de la Fruta</string>
+    <string name="logo">Logo</string>
+    <string name="Canc">CANCELAR REGISTRO</string>
+    <string name="fruta">Logo</string>
+    <string name="logofruto">Logo</string>
+    <string name="nombre_completo">Nombre completo</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
+    <string name="n_mero_de_tel_fono">Número de teléfono</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="confirmar_contrase_a">Confirmar contraseña</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes cuenta?</string>
+    <string name="logo_de_pulpa_de_frutas">" Pulpa de Frutas"</string>
+    <string name="BIENVENIDOS">v1.0.0</string>
+    <string name="app_nam">PULPAS AMEL FRUIT</string>
+    <string name="loadin">BIENVENIDOS</string>
+    <string name="B">VERSION 1.0</string>
+    <string name="imagen">Logo</string>
+    <string name="inicio">Inicio</string>
+    <string name="lista_de_productos">Lista de Productos</string>
+    <string name="registro_de_us">Registro de Usuario</string>
+    <string name="registro_productos">Registro de Productos</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="cambiar_contrase_a">Cambiar Contraseña</string>
+    <string name="cuenta">Cuenta</string>
+    <string name="open">Abrir menú</string>
+    <string name="close">Cerrar menú</string>
+    <string name="CODIGO">Codigo</string>
+    <string name="NOMBRE">"Nombre: "</string>
+    <string name="NombredeDocente">Contenido:\n</string>
+    <string name="precio" />
+    <string name="cantidad_total">Cantidad</string>
+    <string name="precio_t">Precio</string>
+    <string name="lista">LISTA DE PULPAS DE FRUTAS</string>
+    <string name="lista_pulpa">LISTA DE PULPAS DE FRUTAS</string>
+    <string name="c_digo">Código</string>
+    <string name="nombre">Nombre</string>
+    <string name="contenido">Contenido</string>
+    <string name="tprecio">Precio</string>
+    <string name="cantidad_oo">Cantidad</string>
+
+</resources>

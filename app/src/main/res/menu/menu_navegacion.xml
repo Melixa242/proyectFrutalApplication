@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_user"
+            android:title="@string/inicio" />
+        <item
+            android:id="@+id/splash"
+            android:icon="@drawable/ic_fruit"
+            android:title="@string/mi_perfil" />
+        <item
+            android:id="@+id/nav_change_password"
+            android:icon="@drawable/ic_lock"
+            android:title="@string/cambiar_contrase_a" />
+
+
+        <item
+            android:id="@+id/nav_register_pulp_drawer"
+            android:icon="@drawable/input_background"
+            android:title="@string/registro_de_us" />
+
+
+
+
+            <item
+                android:id="@+id/nav_products_list"
+                android:icon="@drawable/ic_fruit"
+                android:title="@string/lista_de_productos" />
+
+
+</menu>

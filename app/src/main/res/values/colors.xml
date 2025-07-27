@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FF5722</color> <!-- Naranja -->
+    <color name="colorPrimaryDark">#E64A19</color>
+    <color name="colorAccent">#FFAB40</color> <!-- Naranja claro -->
+    <color name="colorSecondary">#B0BEC5</color> <!-- Gray -->
+    <color name="colorBackground">#FFFFFF</color> <!-- Blanco para fondo -->
+    <color name="colorTextPrimary">#212121</color> <!-- Texto oscuro -->
+    <color name="colorTextSecondary">#616161</color> <!-- Texto gris -->
+
+
+
+    <!-- Paleta monocromática de gris -->
+    <color name="colorSeconda">#616161</color>       <!-- Gris (secundario) -->
+    <color name="colorSecondaryLight">#9E9E9E</color>  <!-- Variante clara del secundario -->
+    <color name="colorSecondaryDark">#424242</color>   <!-- Variante oscura del secundario -->
+
+    <!-- Colores adicionales -->
+
+    <color name="lightGray">#F5F5F5</color>
+    <color name="mediumGray">#E0E0E0</color>
+    <color name="darkGray">#757575</color>
+
+    <color name="errorColor">#F44336</color>
+    <color name="successColor">#4CAF50</color>
+
+    <!-- Colores para gradientes -->
+    <color name="orangeGradientStart">#FF6B35</color>
+    <color name="orangeGradientEnd">#FF8A65</color>
+
+    <!-- Colores Primarios -->
+    <color name="primary_orange">#FF8C00</color>
+    <color name="primary_orange_light">#FFA500</color>
+    <color name="primary_orange_dark">#FF7700</color>
+
+    <!-- Colores Secundarios -->
+    <color name="secondary_gray">#6B7280</color>
+    <color name="secondary_gray_light">#9CA3AF</color>
+    <color name="secondary_gray_dark">#374151</color>
+
+    <!-- Colores de Fondo -->
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_light_gray">#F9FAFB</color>
+    <color name="background_card">#FFFFFF</color>
+
+    <!-- Colores de Estado -->
+    <color name="success_green">#10B981</color>
+    <color name="error_red">#EF4444</color>
+    <color name="warning_yellow">#F59E0B</color>
+
+    <!-- Colores de Texto -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+</resources>
+

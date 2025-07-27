@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Tema base -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_orange</item>
+        <item name="colorPrimaryVariant">@color/primary_orange_dark</item>
+        <item name="colorOnPrimary">@color/background_white</item>
+        <item name="colorSecondary">@color/secondary_gray</item>
+        <item name="android:windowBackground">@color/background_light_gray</item>
+    </style>
+
+    <!-- Estilos de Texto -->
+    <style name="TitleText">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="SubtitleText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="LabelText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Estilos de Input -->
+    <style name="InputField">
+        <item name="android:layout_height">56dp</item>
+        <item name="android:background">@drawable/input_background</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Estilos de Botón -->
+    <style name="PrimaryButton">
+        <item name="android:layout_height">56dp</item>
+        <item name="android:background">@drawable/button_primary</item>
+        <item name="android:textColor">@color/background_white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="SecondaryButton">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:textColor">@color/secondary_gray</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Estilos de Card -->
+    <style name="CardContainer">
+        <item name="android:background">@drawable/card_background</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:padding">24dp</item>
+    </style>
+</resources>
