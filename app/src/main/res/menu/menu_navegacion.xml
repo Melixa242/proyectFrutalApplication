@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-
+    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_login"
-            android:icon="@drawable/ic_user"
-            android:title="@string/inicio" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Inicio" />
         <item
-            android:id="@+id/splash"
-            android:icon="@drawable/ic_fruit"
-            android:title="@string/mi_perfil" />
+            android:id="@+id/nav_products"
+            android:icon="@drawable/ic_product"
+            android:title="Productos" />
         <item
-            android:id="@+id/nav_change_password"
-            android:icon="@drawable/ic_lock"
-            android:title="@string/cambiar_contrase_a" />
-
-
+            android:id="@+id/nav_users"
+            android:icon="@drawable/ic_users"
+            android:title="Usuarios" />
         <item
-            android:id="@+id/nav_register_pulp_drawer"
-            android:icon="@drawable/ic_user"
-            android:title="@string/registro_de_us" />
-
-
-            <item
-                android:id="@+id/nav_products_list"
-                android:icon="@drawable/ic_fruit"
-                android:title="@string/lista_de_productos" />
-
-
+            android:id="@+id/nav_roles"
+            android:icon="@drawable/ic_role"
+            android:title="Roles" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Cerrar Sesión" />
+    </group>
 </menu>

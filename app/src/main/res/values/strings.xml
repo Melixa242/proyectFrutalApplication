@@ -185,8 +185,8 @@
     <string name="mensaje_hint">Escribe tu mensaje aquí...</string>
     <string name="enviar_mensaje">Enviar Mensaje</string>
 
-    <!-- Navegación -->
-    <string name="navigation_drawer_open">Abrir menú</string>
-    <string name="navigation_drawer_close">Cerrar menú</string>
+    <!-- Products -->
+    <string name="enviar_whatsapp">Enviar por WhatsApp</string>
+    <string name="producto_agregado">Producto agregado correctamente</string>
 
 </resources>
