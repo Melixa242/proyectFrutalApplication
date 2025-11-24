@@ -44,24 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawers();
                 int id = item.getItemId();
-                if (id == R.id.nav_login) {
-                    Intent intent = new Intent(MainActivity.this, loginActivity.class);
-                    startActivity(intent);
-                } else if (id == R.id.nav_change_password) {
-                    Intent intent = new Intent(MainActivity.this, confirm_passwordActivity.class);
-                    startActivity(intent);
-                } else if (id == R.id.nav_register_pulp_drawer) {
-                    Intent intent = new Intent(MainActivity.this, registroActivity2.class);
-                    startActivity(intent);
-                } else if (id == R.id.nav_products_list) {
-                    Intent intent = new Intent(MainActivity.this, Lista_Producto_Activity.class);
-                    startActivity(intent);
-                } else if (id == R.id.splash) {
-                Intent intent = new Intent(MainActivity.this, splashActivity.class);
-                startActivity(intent);
-            }
-
-                return false;
+                return true;
             }
         });
 

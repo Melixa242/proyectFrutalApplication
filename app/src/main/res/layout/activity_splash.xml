@@ -7,86 +7,147 @@
     android:background="@drawable/button_primary"
     tools:context=".splashActivity">
 
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/card_background"
-        android:contentDescription="@string/logo_fruitpulp_pro"
-        android:padding="3dp"
-        android:src="@drawable/logo"
-       android:layout_marginTop="50dp"
+    <!-- Contenedor principal con elevación -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/logoCard"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="120dp"
+        app:cardElevation="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/logo_fruitpulp_pro"
+            android:padding="20dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Círculos decorativos animados -->
+    <View
+        android:id="@+id/circle1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:alpha="0.1"
+        android:background="@android:drawable/screen_background_light_transparent"
+        app:layout_constraintBottom_toBottomOf="@id/logoCard"
+        app:layout_constraintEnd_toEndOf="@id/logoCard"
+        app:layout_constraintStart_toStartOf="@id/logoCard"
+        app:layout_constraintTop_toTopOf="@id/logoCard" />
+
+    <View
+        android:id="@+id/circle2"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:alpha="0.05"
+        android:background="@android:drawable/screen_background_light_transparent"
+        app:layout_constraintBottom_toBottomOf="@id/logoCard"
+        app:layout_constraintEnd_toEndOf="@id/logoCard"
+        app:layout_constraintStart_toStartOf="@id/logoCard"
+        app:layout_constraintTop_toTopOf="@id/logoCard" />
+
+    <!-- Nombre de la app con sombra -->
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-medium"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         android:text="@string/app_nam"
         android:textColor="@color/white"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-light"
-        app:layout_constraintBottom_toTopOf="@+id/appSubtitleTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/logoCard" />
 
-    <!-- Subtítulo de la aplicación -->
+    <!-- Subtítulo con efecto -->
     <TextView
         android:id="@+id/appSubtitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.95"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="0.05"
         android:text="@string/app_subtitle"
         android:textColor="@color/white"
-        android:textSize="26sp"
-        android:alpha="0.9"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appNameTextView" />
 
-    <!-- Indicador de carga -->
-    <ImageView
-        android:id="@+id/ImageView"
-        android:layout_width="154dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/logo_de_pulpa_de_frutas"
-        android:src="@drawable/envase"
-        app:layout_constraintBottom_toTopOf="@+id/loadingTextView"
+    <!-- Imagen del envase con animación -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/productCard"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="48dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="#40FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appSubtitleTextView" />
-    <!-- Texto de carga -->
+        app:layout_constraintTop_toBottomOf="@+id/appSubtitleTextView">
+
+        <ImageView
+            android:id="@+id/ImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/logo_de_pulpa_de_frutas"
+            android:padding="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/envase" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- ProgressBar circular moderno -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:indeterminateTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productCard" />
+
+    <!-- Texto de carga con animación -->
     <TextView
         android:id="@+id/loadingTextView"
-        android:layout_width="242dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="104dp"
-        android:alpha="0.8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:alpha="0.9"
+        android:fontFamily="sans-serif-light"
         android:text="@string/loadin"
         android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
-    <!-- Versión de la aplicación -->
+    <!-- Versión con diseño minimalista -->
     <TextView
         android:id="@+id/versionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
+        android:alpha="0.6"
+        android:fontFamily="monospace"
         android:text="@string/B"
         android:textColor="@color/white"
-        android:textSize="12sp"
-        android:alpha="0.7"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

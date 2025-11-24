@@ -203,14 +203,6 @@ public class activity_contact extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
 
-        if (id == R.id.splash) {
-            startActivity(new Intent(this, MainActivity.class));
-        } else if (id == R.id.nav_login) {
-            startActivity(new Intent(this, registroActivity2.class));
-        } else if (id == R.id.nav_register_pulp_drawer) {
-            // Ya estamos en contacto
-        }
-
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

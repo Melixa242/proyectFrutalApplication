@@ -21,7 +21,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
     @Override
     public ProductosAdapter.ProductosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View ItenView= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_producto,parent,false);
+                .inflate(R.layout.item_product,parent,false);
          return new ProductosViewHolder(ItenView);
 
     }
