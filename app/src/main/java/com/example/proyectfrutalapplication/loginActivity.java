@@ -18,6 +18,9 @@ public class loginActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
     private SessionManager sessionManager;
+    private String registeredName = null;
+    private String registeredEmail = null;
+    private String registeredPhone = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class loginActivity extends AppCompatActivity {
 
         // Configurar listeners
         setupListeners();
+        receiveRegistrationData();
     }
 
     private void initializeViews() {
@@ -96,6 +100,30 @@ public class loginActivity extends AppCompatActivity {
         } else {
             // Login fallido
             Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_LONG).show();
+        }
+    }
+    private void receiveRegistrationData() {
+        // Verificar si vienen datos del registro
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle != null && bundle.getBoolean("from_register", false)) {
+            registeredName = bundle.getString("registered_name");
+            registeredEmail = bundle.getString("registered_email");
+            registeredPhone = bundle.getString("registered_phone");
+
+            // Pre-llenar el campo de email
+            if (registeredEmail != null) {
+                usernameEditText.setText(registeredEmail);
+                // Poner el foco en el campo de contraseña
+                passwordEditText.requestFocus();
+            }
+
+            // Mostrar mensaje personalizado con los datos
+            String welcomeMessage = "¡Hola " + registeredName + "! 👋\n" +
+                    "Email: " + registeredEmail + "\n" +
+                    "Ahora puedes iniciar sesión";
+
+            Toast.makeText(this, welcomeMessage, Toast.LENGTH_LONG).show();
         }
     }
 

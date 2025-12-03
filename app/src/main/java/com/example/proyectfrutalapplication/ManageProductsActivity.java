@@ -1,14 +1,17 @@
 package com.example.proyectfrutalapplication;
 
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -26,6 +29,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -35,11 +39,16 @@ public class ManageProductsActivity extends AppCompatActivity
     private DrawerLayout drawerLayout;
     private ListView productsListView;
     private Button addProductButton;
+    private static final String TAG = "ManageProductsActivity";
 
     private DatabaseHelper dbHelper;
     private SessionManager sessionManager;
     private ProductAdapter productAdapter;
     private List<Product> productsList;
+    private List<FruitAPI> fruitsFromAPI;
+
+    // ========== TRADUCTOR ==========
+    private TranslatorHelper translatorHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +57,11 @@ public class ManageProductsActivity extends AppCompatActivity
 
         dbHelper = new DatabaseHelper(this);
         sessionManager = new SessionManager(this);
+        translatorHelper = new TranslatorHelper(this); // NUEVO
 
         setupToolbarAndDrawer();
         initializeViews();
+        loadFruitsFromAPI();
         loadProducts();
         setupListeners();
     }
@@ -74,6 +85,35 @@ public class ManageProductsActivity extends AppCompatActivity
     private void initializeViews() {
         productsListView = findViewById(R.id.productsListView);
         addProductButton = findViewById(R.id.addProductButton);
+    }
+
+    private void loadFruitsFromAPI() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Cargando catálogo de frutas...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        FruitAPIClient.getAllFruits(new FruitAPIClient.OnFruitsLoadedListener() {
+            @Override
+            public void onFruitsLoaded(List<FruitAPI> fruits) {
+                progressDialog.dismiss();
+                fruitsFromAPI = fruits;
+                Log.d(TAG, "Frutas cargadas: " + fruits.size());
+                Toast.makeText(ManageProductsActivity.this,
+                        fruits.size() + " frutas disponibles en el catálogo",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String error) {
+                progressDialog.dismiss();
+                Log.e(TAG, "Error al cargar frutas: " + error);
+                Toast.makeText(ManageProductsActivity.this,
+                        "Error: " + error + "\nSe puede usar sin catálogo",
+                        Toast.LENGTH_LONG).show();
+                fruitsFromAPI = new ArrayList<>();
+            }
+        });
     }
 
     private void loadProducts() {
@@ -107,16 +147,31 @@ public class ManageProductsActivity extends AppCompatActivity
         View dialogView = inflater.inflate(R.layout.dialog_add_product, null);
         builder.setView(dialogView);
 
-        EditText nameEditText = dialogView.findViewById(R.id.fruitNameEditText);
+        AutoCompleteTextView fruitAutoComplete = dialogView.findViewById(R.id.fruitNameEditText);
         EditText quantityEditText = dialogView.findViewById(R.id.quantityEditText);
         Spinner unitSpinner = dialogView.findViewById(R.id.unitSpinner);
+        EditText wholesalePriceEditText = dialogView.findViewById(R.id.wholesalePriceEditText);
+        EditText retailPriceEditText = dialogView.findViewById(R.id.retailPriceEditText);
         RadioGroup fractionGroup1 = dialogView.findViewById(R.id.fractionRadioGroup);
         RadioGroup fractionGroup2 = dialogView.findViewById(R.id.fractionRadioGroup2);
         EditText productionDateEditText = dialogView.findViewById(R.id.productionDateEditText);
         EditText expiryDateEditText = dialogView.findViewById(R.id.expiryDateEditText);
         EditText notesEditText = dialogView.findViewById(R.id.notesEditText);
+        Button loadInfoButton = dialogView.findViewById(R.id.loadFruitInfoButton);
 
-        // DatePicker para fechas
+        // Configurar autocomplete con frutas traducidas
+        setupAutoCompleteWithTranslation(fruitAutoComplete);
+
+        // Cargar info de fruta con traducción
+        loadInfoButton.setOnClickListener(v -> {
+            String fruitName = fruitAutoComplete.getText().toString().trim();
+            if (!fruitName.isEmpty()) {
+                loadFruitInfoWithTranslation(fruitName, notesEditText);
+            } else {
+                Toast.makeText(this, "Ingrese el nombre de una fruta", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         productionDateEditText.setOnClickListener(v -> showDatePicker(productionDateEditText));
         expiryDateEditText.setOnClickListener(v -> showDatePicker(expiryDateEditText));
 
@@ -128,19 +183,25 @@ public class ManageProductsActivity extends AppCompatActivity
         dialog.show();
 
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-            String name = nameEditText.getText().toString().trim();
+            String name = fruitAutoComplete.getText().toString().trim();
             String quantityStr = quantityEditText.getText().toString().trim();
             String unit = unitSpinner.getSelectedItem().toString();
+            String wholesalePriceStr = wholesalePriceEditText.getText().toString().trim();
+            String retailPriceStr = retailPriceEditText.getText().toString().trim();
             String fraction = getSelectedFraction(fractionGroup1, fractionGroup2);
             String productionDate = productionDateEditText.getText().toString().trim();
             String expiryDate = expiryDateEditText.getText().toString().trim();
             String notes = notesEditText.getText().toString().trim();
 
-            if (validateProductInput(name, quantityStr, productionDate, expiryDate)) {
+            if (validateProductInput(name, quantityStr, wholesalePriceStr, retailPriceStr,
+                    productionDate, expiryDate)) {
+
                 double quantity = Double.parseDouble(quantityStr);
+                double wholesalePrice = Double.parseDouble(wholesalePriceStr);
+                double retailPrice = Double.parseDouble(retailPriceStr);
 
                 Product product = new Product(0, name, quantity, unit, fraction,
-                        productionDate, expiryDate, notes);
+                        productionDate, expiryDate, notes, wholesalePrice, retailPrice);
 
                 long result = dbHelper.addProduct(product, sessionManager.getUserId());
 
@@ -161,19 +222,33 @@ public class ManageProductsActivity extends AppCompatActivity
         View dialogView = inflater.inflate(R.layout.dialog_add_product, null);
         builder.setView(dialogView);
 
-        EditText nameEditText = dialogView.findViewById(R.id.fruitNameEditText);
+        AutoCompleteTextView fruitAutoComplete = dialogView.findViewById(R.id.fruitNameEditText);
         EditText quantityEditText = dialogView.findViewById(R.id.quantityEditText);
         Spinner unitSpinner = dialogView.findViewById(R.id.unitSpinner);
+        EditText wholesalePriceEditText = dialogView.findViewById(R.id.wholesalePriceEditText);
+        EditText retailPriceEditText = dialogView.findViewById(R.id.retailPriceEditText);
         EditText productionDateEditText = dialogView.findViewById(R.id.productionDateEditText);
         EditText expiryDateEditText = dialogView.findViewById(R.id.expiryDateEditText);
         EditText notesEditText = dialogView.findViewById(R.id.notesEditText);
+        Button loadInfoButton = dialogView.findViewById(R.id.loadFruitInfoButton);
+
+        setupAutoCompleteWithTranslation(fruitAutoComplete);
 
         // Llenar con datos existentes
-        nameEditText.setText(product.getName());
+        fruitAutoComplete.setText(product.getName());
         quantityEditText.setText(String.valueOf(product.getQuantity()));
+        wholesalePriceEditText.setText(String.valueOf(product.getWholesalePrice()));
+        retailPriceEditText.setText(String.valueOf(product.getRetailPrice()));
         productionDateEditText.setText(product.getProductionDate());
         expiryDateEditText.setText(product.getExpiryDate());
         notesEditText.setText(product.getNotes());
+
+        loadInfoButton.setOnClickListener(v -> {
+            String fruitName = fruitAutoComplete.getText().toString().trim();
+            if (!fruitName.isEmpty()) {
+                loadFruitInfoWithTranslation(fruitName, notesEditText);
+            }
+        });
 
         productionDateEditText.setOnClickListener(v -> showDatePicker(productionDateEditText));
         expiryDateEditText.setOnClickListener(v -> showDatePicker(expiryDateEditText));
@@ -186,10 +261,13 @@ public class ManageProductsActivity extends AppCompatActivity
         dialog.show();
 
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-            String name = nameEditText.getText().toString().trim();
+            String name = fruitAutoComplete.getText().toString().trim();
             String quantityStr = quantityEditText.getText().toString().trim();
+            String wholesalePriceStr = wholesalePriceEditText.getText().toString().trim();
+            String retailPriceStr = retailPriceEditText.getText().toString().trim();
 
-            if (name.isEmpty() || quantityStr.isEmpty()) {
+            if (name.isEmpty() || quantityStr.isEmpty() ||
+                    wholesalePriceStr.isEmpty() || retailPriceStr.isEmpty()) {
                 Toast.makeText(this, "Complete los campos obligatorios", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -197,6 +275,8 @@ public class ManageProductsActivity extends AppCompatActivity
             product.setName(name);
             product.setQuantity(Double.parseDouble(quantityStr));
             product.setUnit(unitSpinner.getSelectedItem().toString());
+            product.setWholesalePrice(Double.parseDouble(wholesalePriceStr));
+            product.setRetailPrice(Double.parseDouble(retailPriceStr));
             product.setProductionDate(productionDateEditText.getText().toString());
             product.setExpiryDate(expiryDateEditText.getText().toString());
             product.setNotes(notesEditText.getText().toString());
@@ -211,6 +291,107 @@ public class ManageProductsActivity extends AppCompatActivity
             }
         });
     }
+
+    // ========== MÉTODOS CON TRADUCCIÓN ==========
+
+    /**
+     * Configura el autocompletado con nombres de frutas traducidos al español
+     */
+    private void setupAutoCompleteWithTranslation(AutoCompleteTextView autoComplete) {
+        if (fruitsFromAPI != null && !fruitsFromAPI.isEmpty()) {
+            List<String> spanishFruitNames = new ArrayList<>();
+
+            for (FruitAPI fruit : fruitsFromAPI) {
+                // Agregar nombre original en inglés por ahora
+                spanishFruitNames.add(fruit.getName());
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_dropdown_item_1line, spanishFruitNames);
+            autoComplete.setAdapter(adapter);
+            autoComplete.setThreshold(1);
+
+            // Nota: Para traducir los nombres en el dropdown, necesitarías
+            // hacer las traducciones de forma asíncrona al cargar las frutas
+        }
+    }
+
+    /**
+     * Carga información de la fruta desde la API y traduce al español
+     */
+    private void loadFruitInfoWithTranslation(String fruitName, EditText notesEditText) {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Cargando información de " + fruitName + "...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        FruitAPIClient.getFruitByName(fruitName, new FruitAPIClient.OnFruitLoadedListener() {
+            @Override
+            public void onFruitLoaded(FruitAPI fruit) {
+                // Obtener descripción en inglés
+                String englishDescription = fruit.getFullDescription();
+
+                // Mostrar estado de traducción
+                progressDialog.setMessage("Traduciendo información...");
+
+                // Traducir al español
+                translatorHelper.translateText(englishDescription,
+                        new TranslatorHelper.TranslationCallback() {
+
+                            @Override
+                            public void onSuccess(String translatedText) {
+                                progressDialog.dismiss();
+
+                                // Agregar la descripción traducida a las observaciones
+                                String currentNotes = notesEditText.getText().toString();
+                                if (!currentNotes.isEmpty()) {
+                                    currentNotes += "\n\n";
+                                }
+
+                                notesEditText.setText(currentNotes + "📋 INFORMACIÓN NUTRICIONAL:\n" +
+                                        translatedText);
+
+                                Toast.makeText(ManageProductsActivity.this,
+                                        "✓ Información traducida correctamente",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(String error) {
+                                progressDialog.dismiss();
+
+                                // Si falla la traducción, usar texto original en inglés
+                                String currentNotes = notesEditText.getText().toString();
+                                if (!currentNotes.isEmpty()) {
+                                    currentNotes += "\n\n";
+                                }
+
+                                notesEditText.setText(currentNotes + "📋 NUTRITIONAL INFO:\n" +
+                                        englishDescription);
+
+                                Toast.makeText(ManageProductsActivity.this,
+                                        "⚠️ Info cargada (sin traducir): " + error,
+                                        Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onDownloading(String message) {
+                                progressDialog.setMessage("Descargando modelos de traducción...");
+                            }
+                        });
+            }
+
+            @Override
+            public void onError(String error) {
+                progressDialog.dismiss();
+                Toast.makeText(ManageProductsActivity.this,
+                        "Error cargando fruta: " + error,
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    // ========== RESTO DE MÉTODOS ORIGINALES ==========
 
     private void showDeleteProductDialog(Product product) {
         new AlertDialog.Builder(this)
@@ -247,15 +428,19 @@ public class ManageProductsActivity extends AppCompatActivity
         message.append("📦 *Cantidad:* ").append(product.getQuantity()).append(" ")
                 .append(product.getUnit()).append("\n");
         message.append("⚖️ *Fracción:* ").append(product.getFraction()).append("\n");
+        message.append("💰 *Precio Mayor:* Bs ").append(String.format("%.2f",
+                product.getWholesalePrice())).append("\n");
+        message.append("💵 *Precio Menor:* Bs ").append(String.format("%.2f",
+                product.getRetailPrice())).append("\n");
         message.append("📅 *Fecha de Producción:* ").append(product.getProductionDate()).append("\n");
         message.append("⏰ *Fecha de Vencimiento:* ").append(product.getExpiryDate()).append("\n");
 
         if (product.getNotes() != null && !product.getNotes().isEmpty()) {
-            message.append("📝 *Observaciones:* ").append(product.getNotes()).append("\n");
+            message.append("\n📝 *Información:*\n").append(product.getNotes()).append("\n");
         }
 
         message.append("\n✨ *Pulpas de Frutas Frescas y Naturales*\n");
-        message.append("📱 Contacto: +591 12345678");
+        message.append("📱 Contacto: +591 73641022");
 
         return message.toString();
     }
@@ -293,6 +478,7 @@ public class ManageProductsActivity extends AppCompatActivity
     }
 
     private boolean validateProductInput(String name, String quantity,
+                                         String wholesalePrice, String retailPrice,
                                          String productionDate, String expiryDate) {
         if (name.isEmpty()) {
             Toast.makeText(this, "Ingrese el nombre del producto", Toast.LENGTH_SHORT).show();
@@ -302,6 +488,34 @@ public class ManageProductsActivity extends AppCompatActivity
             Toast.makeText(this, "Ingrese la cantidad", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (wholesalePrice.isEmpty()) {
+            Toast.makeText(this, "Ingrese el precio por mayor", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (retailPrice.isEmpty()) {
+            Toast.makeText(this, "Ingrese el precio por menor", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        try {
+            double wPrice = Double.parseDouble(wholesalePrice);
+            double rPrice = Double.parseDouble(retailPrice);
+
+            if (wPrice <= 0 || rPrice <= 0) {
+                Toast.makeText(this, "Los precios deben ser mayores a 0", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            if (wPrice > rPrice) {
+                Toast.makeText(this, "El precio por mayor debe ser menor al precio por menor",
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Precios inválidos", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         if (productionDate.isEmpty()) {
             Toast.makeText(this, "Seleccione la fecha de producción", Toast.LENGTH_SHORT).show();
             return false;
@@ -315,7 +529,6 @@ public class ManageProductsActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Manejar navegación
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -326,6 +539,15 @@ public class ManageProductsActivity extends AppCompatActivity
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Cerrar el traductor para liberar recursos
+        if (translatorHelper != null) {
+            translatorHelper.close();
         }
     }
 }

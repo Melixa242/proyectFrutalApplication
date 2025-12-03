@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
@@ -13,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Información del Producto"
+            android:text="@string/informaci_n_del_producto"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -32,7 +33,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="4dp" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/fruitNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,6 +120,102 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <!-- SECCIÓN DE PRECIOS -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/precios_de_venta"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Layout horizontal para precios -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- Precio por Mayor -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/precio_por_mayor"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/wholesalePriceEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_selector"
+                    android:hint="Bs 0.00"
+                    android:inputType="numberDecimal"
+                    android:padding="16dp"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="16sp"
+                    android:drawableStart="@drawable/ic_money"
+                    android:drawablePadding="8dp" />
+
+            </LinearLayout>
+
+            <!-- Precio por Menor -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/precio_por_menor"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/retailPriceEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_selector"
+                    android:hint="Bs 0.00"
+                    android:inputType="numberDecimal"
+                    android:padding="16dp"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="16sp"
+                    android:drawableStart="@drawable/ic_money"
+                    android:drawablePadding="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Nota informativa sobre precios -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/precio_por_mayor_para_ventas_de_grandes_cantidades_n_precio_por_menor_para_ventas_al_detalle"
+            android:textColor="@color/colorSecondary"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:layout_marginBottom="16dp"
+            android:padding="8dp"
+            android:background="#F5F5F5"/>
 
         <!-- Campo fracción -->
         <TextView
@@ -281,13 +378,13 @@
                     android:textColor="@color/colorSecondary"
                     android:textSize="16sp"
                     android:focusable="false"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    tools:ignore="TextFields" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <!-- Campo de observaciones -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -309,6 +406,33 @@
             android:textSize="16sp"
             android:gravity="top|start"
             android:maxLines="4" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de la fruta"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <AutoCompleteTextView
+                android:id="@+id/fruitNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:completionThreshold="1"
+                tools:ignore="DuplicateIds" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Botón para cargar información de API -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loadFruitInfoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔍 Cargar Info Nutricional"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

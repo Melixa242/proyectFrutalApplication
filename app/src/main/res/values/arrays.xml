@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weight_units">
+        <item>Kilogramos (Kg)</item>
+        <item>500 Gramos (g)</item>
+        <item>250 Gramos</item>
+        <item>Balde 16 (kg)</item>
+    </string-array>
+</resources>

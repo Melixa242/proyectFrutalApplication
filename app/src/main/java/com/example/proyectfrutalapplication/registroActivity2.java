@@ -120,7 +120,16 @@ public class registroActivity2 extends AppCompatActivity {
 
         if (userId > 0) {
             Toast.makeText(this, "¡Registro exitoso! Inicie sesión", Toast.LENGTH_LONG).show();
-           Intent intent = new Intent(registroActivity2.this, loginActivity.class);
+
+            // Crear Bundle con los datos del usuario registrado
+            Intent intent = new Intent(registroActivity2.this, loginActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("registered_name", fullName);
+            bundle.putString("registered_email", email);
+            bundle.putString("registered_phone", phone);
+            bundle.putBoolean("from_register", true);
+            intent.putExtras(bundle);
+
             startActivity(intent);
             finish();
         } else {

@@ -8,24 +8,42 @@
             android:icon="@drawable/ic_home"
             android:title="Inicio" />
 
-        <item
-            android:id="@+id/nav_products"
-            android:icon="@drawable/ic_fruit"
-            android:title="Mis Productos" />
+        <item android:title="VENTAS">
+            <menu>
+                <item
+                    android:id="@+id/nav_sales"
+                    android:icon="@drawable/ic_sales"
+                    android:title="Realizar Venta" />
 
-        <item
-            android:id="@+id/nav_users"
-            android:icon="@drawable/ic_users"
-            android:title="Gestionar Usuarios" />
+                <item
+                    android:id="@+id/nav_my_sales"
+                    android:icon="@drawable/ic_list"
+                    android:title="Mis Ventas" />
+            </menu>
+        </item>
 
-        <item
-            android:id="@+id/nav_roles"
-            android:icon="@drawable/ic_role"
-            android:title="Gestionar Roles" />
+        <item android:title="GESTIÓN">
+            <menu>
+                <item
+                    android:id="@+id/nav_products"
+                    android:icon="@drawable/ic_fruit"
+                    android:title="Mis Productos" />
+
+                <item
+                    android:id="@+id/nav_users"
+                    android:icon="@drawable/ic_users"
+                    android:title="Gestionar Usuarios" />
+
+                <item
+                    android:id="@+id/nav_roles"
+                    android:icon="@drawable/ic_role"
+                    android:title="Gestionar Roles" />
+            </menu>
+        </item>
 
     </group>
 
-    <item android:title="Configuración">
+    <item android:title="CONFIGURACIÓN">
         <menu>
             <item
                 android:id="@+id/nav_logout"

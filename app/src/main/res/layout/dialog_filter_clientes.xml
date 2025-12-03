@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opciones de filtrado"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:layout_marginBottom="16dp" />
+
+    <CheckBox
+        android:id="@+id/cbOnlyActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mostrar solo clientes activos"
+        android:textSize="14sp"
+        android:padding="8dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginVertical="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="💡 Tip: Usa la barra de búsqueda para filtrar por nombre, teléfono o email"
+        android:textSize="12sp"
+        android:textColor="#757575"
+        android:padding="8dp" />
+
+</LinearLayout>

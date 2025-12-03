@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione el tipo de eliminación:"
+        android:textSize="16sp"
+        android:textColor="#212121"
+        android:layout_marginBottom="16dp" />
+
+    <RadioGroup
+        android:id="@+id/rgDeleteType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/rbLogicalDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Desactivar (Borrado lógico)"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• El cliente se marca como inactivo\n• Se puede reactivar posteriormente\n• Se mantiene el historial"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:paddingStart="40dp"
+            android:paddingEnd="8dp"
+            android:layout_marginBottom="12dp" />
+
+        <RadioButton
+            android:id="@+id/rbPhysicalDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar permanentemente"
+            android:textSize="14sp"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠️ El cliente se elimina de forma permanente\n⚠️ Esta acción NO se puede deshacer"
+            android:textSize="12sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:paddingStart="40dp"
+            android:paddingEnd="8dp" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginVertical="8dp" />
+
+    <TextView
+        android:id="@+id/tvDeleteWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="💡 Recomendación: Use el borrado lógico para mantener el historial del cliente."
+        android:textSize="12sp"
+        android:textColor="#616161"
+        android:padding="8dp"
+        android:background="#FFF9C4" />
+
+</LinearLayout>

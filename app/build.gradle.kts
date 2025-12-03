@@ -47,6 +47,10 @@ dependencies {
 
     implementation("org.osmdroid:osmdroid-wms:6.1.18")
     implementation("org.osmdroid:osmdroid-mapsforge:6.1.18")
+    implementation("com.google.mlkit:translate:17.0.2")
+
+
+
 
 
 }

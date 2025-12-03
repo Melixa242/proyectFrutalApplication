@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Nombre y Estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvClienteNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre del Cliente"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvClienteEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activo"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_rounded"
+                android:textColor="@android:color/holo_green_dark" />
+        </LinearLayout>
+
+        <!-- Teléfono -->
+        <TextView
+            android:id="@+id/tvClienteTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tel: 77123456"
+            android:textColor="#616161"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@android:drawable/ic_menu_call"
+            android:drawablePadding="8dp" />
+
+        <!-- Dirección -->
+        <TextView
+            android:id="@+id/tvClienteDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dir: Av. Principal #123"
+            android:textColor="#616161"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:drawableLeft="@android:drawable/ic_menu_mylocation"
+            android:drawablePadding="8dp" />
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/tvClienteEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: cliente@email.com"
+            android:textColor="#616161"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:drawableLeft="@android:drawable/ic_dialog_email"
+            android:drawablePadding="8dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

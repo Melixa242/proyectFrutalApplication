@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Imagen del producto -->
+        <ImageView
+            android:id="@+id/productImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_fruit"
+            android:contentDescription="Producto"
+            app:tint="@color/colorPrimary"
+            android:padding="8dp"
+            android:background="@drawable/card_background"/>
+
+        <!-- Información del producto -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/productNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Producto"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/productPricesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mayor: Bs 0.00 | Menor: Bs 0.00"
+                android:textColor="@color/colorSecondary"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_money"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/productStockTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stock: 0.0 Kg"
+                android:textColor="@color/colorSecondary"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addToCartButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_selector"
+                android:text="Agregar al Carrito"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_cart"
+                android:drawablePadding="4dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

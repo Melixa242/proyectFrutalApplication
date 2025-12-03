@@ -44,12 +44,6 @@
     <string name="save_pulp">Guardar Registro</string>
     <string name="correo">correo electronico</string>
 
-    <!-- Arrays -->
-    <string-array name="weight_units">
-        <item>Kilogramos</item>
-        <item>Gramos</item>
-        <item>Libras</item>
-    </string-array>
 
     <string-array name="fruit_fractions">
         <item>1/4</item>
@@ -194,5 +188,18 @@
     <string name="gesti_n_de_pulpas">Gestión de Pulpas</string>
     <string name="agregar_pulpa">+ Agregar Pulpa</string>
     <string name="lista_frutas">Lista de Productos</string>
+    <string name="informaci_n_del_producto">Información del Producto</string>
+    <string name="precios_de_venta">💰 Precios de Venta</string>
+    <string name="precio_por_mayor">Precio por Mayor</string>
+    <string name="precio_por_menor">Precio por Menor</string>
+    <string name="precio_por_mayor_para_ventas_de_grandes_cantidades_n_precio_por_menor_para_ventas_al_detalle">ℹ️ Precio por Mayor: Para ventas de grandes cantidades\nℹ️ Precio por Menor: Para ventas al detalle</string>
+    <string name="lista_de_ventas_realizadas">Lista de Ventas Realizadas</string>
+    <string name="acerca_de">CONTACTENOS AQUI\n</string>
+    <string name="info">FRUIT PULPAS CONGELADAS</string>
+    <string name="ingresa_tu_consulta_sobre_frutas">Ingresa tu consulta sobre frutas</string>
+    <string name="traducci_n_al_espa_ol">Traducción al Español</string>
+    <string name="traducir_a_espa_ol">Traducir a Español</string>
+    <string name="traductor">Traductor</string>
+    <string name="clientes">Clientes</string>
 
 </resources>

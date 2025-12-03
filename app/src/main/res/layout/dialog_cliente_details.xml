@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado: "
+                android:textSize="14sp"
+                android:textColor="#757575" />
+
+            <TextView
+                android:id="@+id/tvDetailEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACTIVO"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_rounded" />
+        </LinearLayout>
+
+        <!-- Nombre -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOMBRE COMPLETO"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetailNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Juan Pérez"
+            android:textSize="18sp"
+            android:textColor="#212121"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Teléfono -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TELÉFONO"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetailTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="77123456"
+            android:textSize="16sp"
+            android:textColor="#212121"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:drawableLeft="@android:drawable/ic_menu_call"
+            android:drawablePadding="8dp" />
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMAIL"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetailEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cliente@email.com"
+            android:textSize="16sp"
+            android:textColor="#212121"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:drawableLeft="@android:drawable/ic_dialog_email"
+            android:drawablePadding="8dp" />
+
+        <!-- Dirección -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DIRECCIÓN"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetailDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Av. Principal #123"
+            android:textSize="16sp"
+            android:textColor="#212121"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:drawableLeft="@android:drawable/ic_menu_mylocation"
+            android:drawablePadding="8dp" />
+
+        <!-- Notas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOTAS / OBSERVACIONES"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetailNotas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cliente frecuente, preferencia por pagos en efectivo"
+            android:textSize="14sp"
+            android:textColor="#424242"
+            android:layout_marginTop="4dp"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:minHeight="60dp" />
+
+    </LinearLayout>
+
+</ScrollView>

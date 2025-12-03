@@ -1,10 +1,10 @@
 package com.example.proyectfrutalapplication;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +25,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
     private TextView welcomeTextView, userNameTextView, userEmailTextView;
-    private TextView totalUsersTextView, totalProductsTextView, totalRolesTextView;
-    private CardView usersCard, productsCard, rolesCard;
+    private TextView totalUsersTextView, totalProductsTextView, totalRolesTextView, totalSalesTextView;
+    private CardView usersCard, productsCard, rolesCard, salesCard, mySalesCard;
 
     private DatabaseHelper dbHelper;
     private SessionManager sessionManager;
+    private Button testSensorButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         dbHelper = new DatabaseHelper(this);
         sessionManager = new SessionManager(this);
+        testSensorButton = findViewById(R.id.contacto);
 
         // Verificar sesión
         if (!sessionManager.isLoggedIn()) {
@@ -75,9 +77,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         totalUsersTextView = findViewById(R.id.totalUsersTextView);
         totalProductsTextView = findViewById(R.id.totalProductsTextView);
         totalRolesTextView = findViewById(R.id.totalRolesTextView);
+        totalSalesTextView = findViewById(R.id.totalSalesTextView);
         usersCard = findViewById(R.id.usersCard);
         productsCard = findViewById(R.id.productsCard);
         rolesCard = findViewById(R.id.rolesCard);
+        salesCard = findViewById(R.id.salesCard);
+        mySalesCard = findViewById(R.id.mySalesCard);
     }
 
     private void loadUserInfo() {
@@ -93,15 +98,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         List<User> users = dbHelper.getAllUsers();
         List<Product> products = dbHelper.getAllProducts();
         List<Role> roles = dbHelper.getAllRoles();
+        List<Sale> sales = dbHelper.getAllSales();
 
         totalUsersTextView.setText(String.valueOf(users.size()));
         totalProductsTextView.setText(String.valueOf(products.size()));
         totalRolesTextView.setText(String.valueOf(roles.size()));
+        totalSalesTextView.setText(String.valueOf(sales.size()));
     }
 
     private void setupCardListeners() {
         usersCard.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, activity_contact.class);
+            Intent intent = new Intent(HomeActivity.this, ManageClientesActivity.class);
             startActivity(intent);
         });
 
@@ -111,8 +118,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
         rolesCard.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ManageRolesActivity.class);
+            Intent intent = new Intent(HomeActivity.this, TranslatorActivity.class);
             startActivity(intent);
+        });
+
+        salesCard.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, SalesActivity.class);
+            startActivity(intent);
+        });
+
+        mySalesCard.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MySalesActivity.class);
+            startActivity(intent);
+        });
+        testSensorButton.setOnClickListener(v -> {
+            startActivity(new Intent(this, activity_contact.class));
         });
     }
 
@@ -122,13 +142,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_home) {
             // Ya estamos en home
+        } else if (id == R.id.nav_sales) {
+            startActivity(new Intent(this, SalesActivity.class));
+        } else if (id == R.id.nav_my_sales) {
+            startActivity(new Intent(this, MySalesActivity.class));
         } else if (id == R.id.nav_products) {
             startActivity(new Intent(this, ManageProductsActivity.class));
         } else if (id == R.id.nav_users) {
             startActivity(new Intent(this, ManageUsersActivity.class));
         } else if (id == R.id.nav_roles) {
             startActivity(new Intent(this, ManageRolesActivity.class));
-
         } else if (id == R.id.nav_logout) {
             showLogoutDialog();
         }
@@ -163,9 +186,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         loadStatistics(); // Actualizar estadísticas al volver
     }
 
-    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
@@ -178,4 +201,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     .show();
         }
     }
+
+
+
 }

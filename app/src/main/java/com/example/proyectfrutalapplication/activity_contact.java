@@ -152,22 +152,27 @@ public class activity_contact extends AppCompatActivity implements NavigationVie
         }
 
         // Enviar email usando Intent
-        sendEmailIntent(name, email, message);
+        sendWhatsAppMessageWithChoice(name, email, message);
     }
 
-    private void sendEmailIntent(String name, String email, String message) {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"info@tuempresa.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mensaje de contacto de " + name);
-        emailIntent.putExtra(Intent.EXTRA_TEXT,
-                "Nombre: " + name + "\n" +
-                        "Email: " + email + "\n\n" +
-                        "Mensaje:\n" + message);
+    private void sendWhatsAppMessageWithChoice(String name, String email, String message) {
+        String phoneNumber = "59175123456"; // CAMBIA ESTE NÚMERO
+
+        String whatsappMessage =
+                "*Mensaje de contacto*\n\n" +
+                        "*Nombre:* " + name + "\n" +
+                        "*Email:* " + email + "\n\n" +
+                        "*Mensaje:*\n" + message;
 
         try {
-            startActivity(Intent.createChooser(emailIntent, "Enviar mensaje con..."));
-            Toast.makeText(this, "Abriendo cliente de email...", Toast.LENGTH_SHORT).show();
+            Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+            whatsappIntent.setType("text/plain");
+            whatsappIntent.putExtra(Intent.EXTRA_TEXT, whatsappMessage);
+
+            // Esto permite elegir entre WhatsApp normal y Business si ambos están instalados
+            whatsappIntent.setPackage("com.whatsapp");
+
+            startActivity(whatsappIntent);
 
             // Limpiar campos
             nameEditText.setText("");
@@ -175,7 +180,7 @@ public class activity_contact extends AppCompatActivity implements NavigationVie
             messageEditText.setText("");
 
         } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(this, "No hay aplicaciones de email instaladas", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "WhatsApp no está instalado", Toast.LENGTH_LONG).show();
         }
     }
 

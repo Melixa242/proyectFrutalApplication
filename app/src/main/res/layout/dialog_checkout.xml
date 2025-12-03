@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Datos del Cliente"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_user"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"/>
+
+        <!-- Nombre del cliente -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Cliente"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/customerNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_selector"
+            android:hint="Nombre completo"
+            android:inputType="textCapWords"
+            android:padding="16dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="16sp" />
+
+        <!-- Teléfono -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono / WhatsApp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/customerPhoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_selector"
+            android:hint="+591 12345678"
+            android:inputType="phone"
+            android:padding="16dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="16sp"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="8dp"/>
+
+        <!-- Dirección -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección de Entrega"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/customerAddressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_selector"
+            android:hint="Calle, número, zona"
+            android:inputType="textPostalAddress"
+            android:padding="16dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="16sp"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="8dp"/>
+
+        <!-- Notas adicionales -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notas Adicionales (Opcional)"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/notesEditText"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edit_text_selector"
+            android:hint="Indicaciones especiales para la entrega"
+            android:inputType="textMultiLine"
+            android:padding="16dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="16sp"
+            android:gravity="top|start"
+            android:maxLines="4" />
+
+    </LinearLayout>
+
+</ScrollView>
